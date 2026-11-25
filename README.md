@@ -30,11 +30,6 @@ sp500-ml-predictor/
 └── results/             outputs written by run_pipeline.py
 ```
 
-## Data flow and contracts
-
-Each step hands the next one a fixed shape of data. Keep these the same so
-the pieces fit together; agree any change with the ML Lead first.
-
 | Step | Function | Gives the next step |
 |---|---|---|
 | 1. Load | `data.load_clean()` | DataFrame, monthly `Date` index, columns `price, dividend, earnings, cpi, long_rate, pe10` (all > 0) |
@@ -44,12 +39,8 @@ the pieces fit together; agree any change with the ML Lead first.
 | 5. Score | `evaluate.evaluate(name, y_true, y_pred, baseline_pred)` | Dict of metrics for one model |
 | 6. Show | `plots.*`, `app/app.py` | PNG charts in `results/`; the app reads saved results and models |
 
-## Roles and expectations
 
-Fill in names. Each person owns their files: they write them, keep them
-working, and review any change someone else makes to them.
-
-### Member 1: Data & Features Engineer — [Name]
+### Member 1: Data & Features Engineer — Phillip
 **Owns:** `src/data.py` (done), `src/features.py`
 - Maintain `data.py`; refresh the dataset snapshot only when the team agrees.
 - Implement `make_target`, `make_features` and `build_dataset`.
@@ -59,7 +50,7 @@ working, and review any change someone else makes to them.
 
 **Done when:** `build_dataset()` returns the agreed table, the data dictionary is written, and the feature tests pass.
 
-### Member 2: ML Lead — [Name]
+### Member 2: ML Lead — Clinton Osawe
 **Owns:** `config.py`, `src/split.py`, `src/evaluate.py`, `run_pipeline.py`, `tests/`
 - Set the shared settings in `config.py` (split dates from the plan, seed, and so on).
 - Implement `time_split`, `tuning_folds`, `HistoricalMeanBaseline` and `evaluate`.
@@ -69,7 +60,7 @@ working, and review any change someone else makes to them.
 
 **Done when:** `python run_pipeline.py` runs end to end, the log is in use, and the split and baseline tests pass.
 
-### Member 3: ML Engineer, linear regression & visualization — [Name]
+### Member 3: ML Engineer, linear regression & visualization — Visula 
 **Owns:** `src/linear_model.py`, `src/plots.py`
 - Implement `build_linear` and `explain_linear`; optionally `tune_linear` using `tuning_folds()`.
 - Fit any preprocessing (such as scaling) on training data only.
@@ -77,7 +68,7 @@ working, and review any change someone else makes to them.
 
 **Done when:** the linear model is scored with `evaluate()` and logged, and both plots are saved to `results/`.
 
-### Member 4: ML Engineer, random forest & app — [Name]
+### Member 4: ML Engineer, random forest & app — Jordan Tauro
 **Owns:** `src/random_forest.py`, `app/app.py`
 - Implement `build_forest`, `tune_forest` (using `tuning_folds()`) and `feature_importance`.
 - Watch for overfitting: compare training and validation scores.
