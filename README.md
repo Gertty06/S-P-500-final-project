@@ -14,17 +14,17 @@ implemented is up to its owner, as long as it keeps the contracts below.
 
 ```
 sp500-ml-predictor/
-├── config.py            shared settings: paths, split dates, seed      (Member 2)
-├── run_pipeline.py      runs every step in order, saves results/        (Member 2)
+├── config.py            shared settings: paths, split dates, seed      (Clinton)
+├── run_pipeline.py      runs every step in order, saves results/        (Clinton)
 ├── src/
-│   ├── data.py          load + clean the raw CSV           DONE         (Member 1)
-│   ├── features.py      features + target                               (Member 1)
-│   ├── split.py         time-based train/test split, tuning folds       (Member 2)
-│   ├── evaluate.py      baseline model + shared scoring                 (Member 2)
-│   ├── linear_model.py  linear regression                               (Member 3)
-│   ├── plots.py         the plan's two charts                           (Member 3)
-│   └── random_forest.py random forest + feature importance              (Member 4)
-├── app/app.py           Streamlit app for users                         (Member 4)
+│   ├── data.py          load + clean the raw CSV           DONE         (Phillip)
+│   ├── features.py      features + target                               (Phillip)
+│   ├── split.py         time-based train/test split, tuning folds       (Clinton)
+│   ├── evaluate.py      baseline model + shared scoring                 (Clinton)
+│   ├── linear_model.py  linear regression                               (Visula)
+│   ├── plots.py         the plan's two charts                           (Visula)
+│   └── random_forest.py random forest + feature importance              (Jordan)
+├── app/app.py           Streamlit app for users                         (Jordan)
 ├── tests/               data tests (passing) + contract checks (skipped)
 ├── data/raw/data.csv    dataset snapshot, so everyone uses the same data
 └── results/             outputs written by run_pipeline.py
