@@ -3,7 +3,7 @@
 Predict next month's S&P 500 return from monthly market and economic data,
 compare **linear regression** and a **random forest** against a
 **historical-average baseline**, and show the result in a simple app for
-beginner investors. Educational tool, not financial advice.
+beginner investors. As an educational tool.
 
 **Status:** skeleton. Only `src/data.py` is implemented. Every other file
 defines its functions, inputs, outputs and rules, and raises
